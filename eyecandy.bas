@@ -1,21 +1,21 @@
 Sub eyecandy()
-        'òåêóùèé ôàéë
+        'Ñ‚ÐµÐºÑƒÑ‰Ð¸Ð¹ Ñ„Ð°Ð¹Ð»
    Dim SelectedItem
-        'òåêóùàÿ ðàáî÷àÿ êíèãà
+        'Ñ‚ÐµÐºÑƒÑ‰Ð°Ñ Ñ€Ð°Ð±Ð¾Ñ‡Ð°Ñ ÐºÐ½Ð¸Ð³Ð°
    Dim wb As Workbook
    Dim falsespace As Range
        
-        'âûçûâàåì äèàëîã âûáîðà ôàéëîâ
+        'Ð²Ñ‹Ð·Ñ‹Ð²Ð°ÐµÐ¼ Ð´Ð¸Ð°Ð»Ð¾Ð³ Ð²Ñ‹Ð±Ð¾Ñ€Ð° Ñ„Ð°Ð¹Ð»Ð¾Ð²
    With Application.FileDialog(msoFileDialogFilePicker)
-        .Title = "Âûáåðèòå ôàéëû îò÷åòîâ"    'íàäïèñü â îêíå äèàëîãà
-       'ïóòü ïî óìîë÷àíèþ ê ïàïêå ãäå ðàñïîëîæåí èñõîäíûé ôàéë, ìîæíî èçìåíèòü
+        .Title = "Ð’Ñ‹Ð±ÐµÑ€Ð¸Ñ‚Ðµ Ñ„Ð°Ð¹Ð»Ñ‹ Ð¾Ñ‚Ñ‡ÐµÑ‚Ð¾Ð²"    'Ð½Ð°Ð´Ð¿Ð¸ÑÑŒ Ð² Ð¾ÐºÐ½Ðµ Ð´Ð¸Ð°Ð»Ð¾Ð³Ð°
+       'Ð¿ÑƒÑ‚ÑŒ Ð¿Ð¾ ÑƒÐ¼Ð¾Ð»Ñ‡Ð°Ð½Ð¸ÑŽ Ðº Ð¿Ð°Ð¿ÐºÐµ Ð³Ð´Ðµ Ñ€Ð°ÑÐ¿Ð¾Ð»Ð¾Ð¶ÐµÐ½ Ð¸ÑÑ…Ð¾Ð´Ð½Ñ‹Ð¹ Ñ„Ð°Ð¹Ð», Ð¼Ð¾Ð¶Ð½Ð¾ Ð¸Ð·Ð¼ÐµÐ½Ð¸Ñ‚ÑŒ
        .InitialFileName = ThisWorkbook.Path & Application.PathSeparator & "*.csv"
-        .AllowMultiSelect = True    'âûáîð íåñêîëüêèõ ôàéëîâ ðàçðåø¸í
+        .AllowMultiSelect = True    'Ð²Ñ‹Ð±Ð¾Ñ€ Ð½ÐµÑÐºÐ¾Ð»ÑŒÐºÐ¸Ñ… Ñ„Ð°Ð¹Ð»Ð¾Ð² Ñ€Ð°Ð·Ñ€ÐµÑˆÑ‘Ð½
        If .Show = False Then Exit Sub
  
         Application.ScreenUpdating = False
-        For Each SelectedItem In .SelectedItems    'ïåðåáîð ôàéëîâ â ïàïêå
-           'îòêðûâàåì êíèãó
+        For Each SelectedItem In .SelectedItems    'Ð¿ÐµÑ€ÐµÐ±Ð¾Ñ€ Ñ„Ð°Ð¹Ð»Ð¾Ð² Ð² Ð¿Ð°Ð¿ÐºÐµ
+           'Ð¾Ñ‚ÐºÑ€Ñ‹Ð²Ð°ÐµÐ¼ ÐºÐ½Ð¸Ð³Ñƒ
            Workbooks.OpenText _
                 Filename:=SelectedItem, _
                 Origin:=xlWindows, _
@@ -24,25 +24,36 @@ Sub eyecandy()
                 TextQualifier:=xlTextQualifierNone, _
                 ConsecutiveDelimiter:=False, _
                 Semicolon:=True, _
-                ThousandsSeparator:=Chr(160), _
                 Local:=True
             Set wb = ActiveWorkbook
             With wb.Worksheets(1)
-                'ïî÷èíèòü êîñÿêè äåëôèéñêèõ êðèâîðó÷åê
-               If wb.Name = "Ìåñòíàÿ - íåîïëà÷èâàåìûé ëèìèò.csv" Then _
+                'Ð¿Ð¾Ñ‡Ð¸Ð½Ð¸Ñ‚ÑŒ ÐºÐ¾ÑÑÐºÐ¸ Ð´ÐµÐ»Ñ„Ð¸Ð¹ÑÐºÐ¸Ñ… ÐºÑ€Ð¸Ð²Ð¾Ñ€ÑƒÑ‡ÐµÐº
+               If wb.Name = "ÐœÐµÑÑ‚Ð½Ð°Ñ - Ð½ÐµÐ¾Ð¿Ð»Ð°Ñ‡Ð¸Ð²Ð°ÐµÐ¼Ñ‹Ð¹ Ð»Ð¸Ð¼Ð¸Ñ‚.csv" Then _
                     .Rows(2).Delete
-               If wb.Name = "Ìåñòíàÿ - ê îïëàòå.csv" Then _
+               If wb.Name = "ÐœÐµÑÑ‚Ð½Ð°Ñ - Ðº Ð¾Ð¿Ð»Ð°Ñ‚Ðµ.csv" Then _
                     .Cells(2, 4).Delete Shift:=xlShiftToLeft
-                'ïîïðàâèòü øèðèíó ñòîëáöîâ
+                'Ð¿Ð¾Ð¿Ñ€Ð°Ð²Ð¸Ñ‚ÑŒ ÑˆÐ¸Ñ€Ð¸Ð½Ñƒ ÑÑ‚Ð¾Ð»Ð±Ñ†Ð¾Ð²
                .Columns.AutoFit
                 With .UsedRange
-                    'çàïèëèòü ðàìêè
+                    'Ð·Ð°Ð¿Ð¸Ð»Ð¸Ñ‚ÑŒ Ñ€Ð°Ð¼ÐºÐ¸
                     .Borders.LineStyle = xlContinuous
-                    'âûäåëèòü çàãîëîâêè ñòîëáöîâ
+                    'Ð²Ñ‹Ð´ÐµÐ»Ð¸Ñ‚ÑŒ Ð·Ð°Ð³Ð¾Ð»Ð¾Ð²ÐºÐ¸ ÑÑ‚Ð¾Ð»Ð±Ñ†Ð¾Ð²
                     .Rows(1).Font.Bold = True
-                    'âûäåëèòü ðàìêè â ïåðâîì ðÿäó
+                    'Ð²Ñ‹Ð´ÐµÐ»Ð¸Ñ‚ÑŒ Ñ€Ð°Ð¼ÐºÐ¸ Ð² Ð¿ÐµÑ€Ð²Ð¾Ð¼ Ñ€ÑÐ´Ñƒ
                     .Rows(1).Borders.Weight = xlThick
                 End With
+                'I fucking won this war, fuck you excel and ibexpert
+                If Range("F1").Value = "ITOG" Then
+                    With .Range("F:G")
+                        .NumberFormat = "0.00"
+                        .Replace What:=Chr(160), Replacement:=""
+                    End With
+                    For Each curr In .Range("F:G")
+                        If (IsNumeric(curr.Value)) And (curr.Value > 999999) Then
+                            curr.Value = curr.Value / 1000
+                        End If
+                    Next curr
+                End If
             End With
             wb.SaveAs Filename:=Replace(wb.FullName, ".csv", ".xls"), FileFormat:=56
             wb.Close SaveChanges:=False
